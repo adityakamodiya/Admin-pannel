@@ -2,19 +2,34 @@ import { useEffect, useState } from 'react'
 
 function App() {
   const [al, setAl] = useState(false);
+  // const [sessionkey, setsessionkey] = useState(null);
   const [promptShown, setPromptShown] = useState(false); // Flag to ensure prompt is called once
 
   function authenticate() {
-    const userInput = prompt("Please enter key:");
-    if (userInput === "do not stop baby!!!") {
+    let localkey = null;
+    let userInput
+    localkey = sessionStorage.getItem("key");
+    if(localkey==null){
+                   userInput = prompt("Please enter key:");
+                }
+
+    if (userInput === "aa") {
       setAl(true);
-    } else {
+      sessionStorage.setItem("key", "baby");
+    }
+
+    if(localkey == "baby"){
+      setAl(true);
+    }
+
+    else {
       setAl(false);
-      if (userInput !== null) {
+
         alert("Unauthorized access!!!!!");
-      }
+      
     }
     setPromptShown(true); // Set flag to true after prompt is called
+
   }
 
   useEffect(() => {
@@ -22,6 +37,13 @@ function App() {
       authenticate();
     }
   }, [promptShown]);
+
+
+  function clear(e){
+    console.log("hello")
+    sessionStorage.clear();
+    window.location.reload();
+  }
 
   const data = [
     { name: 'Alice', email: 'alice@example.com', link: 'https://example.com/profile/alice' },
@@ -39,6 +61,7 @@ function App() {
     <>
       {
         (al) ?
+        <>
           <table border="1" style={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}>
             <thead>
               <tr>
@@ -56,7 +79,9 @@ function App() {
                 </tr>
               ))}
             </tbody>
-          </table> : ''
+          </table>
+          <button onClick={(e)=>{clear()}}>click me</button>
+          </> : ''
       }
     </>
   );
