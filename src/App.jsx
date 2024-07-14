@@ -7,7 +7,7 @@ function App() {
 
   function authenticate() {
     let localkey = null;
-    let userInput
+    let userInput = false;
     localkey = sessionStorage.getItem("key");
     if(localkey==null){
                    userInput = prompt("Please enter key:");
@@ -17,17 +17,19 @@ function App() {
       setAl(true);
       sessionStorage.setItem("key", "baby");
     }
-
-    if(localkey == "baby"){
-      setAl(true);
-    }
-
+    
     else {
       setAl(false);
 
-        alert("Unauthorized access!!!!!");
+        // alert("Unauthorized access!!!!!");
+      }
       
+    if(localkey == "baby"){
+      setAl(true);
     }
+    
+
+    
     setPromptShown(true); // Set flag to true after prompt is called
 
   }
