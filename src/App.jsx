@@ -6,7 +6,7 @@ function App() {
 
   function authenticate() {
     const userInput = prompt("Please enter key:");
-    if (userInput === "aa") {
+    if (userInput === "do not stop baby!!!") {
       setAl(true);
     } else {
       setAl(false);
