@@ -8,14 +8,14 @@ function App() {
   function authenticate() {
     let localkey = null;
     let userInput = false;
-    localkey = sessionStorage.getItem("key");
+    localkey = localStorage.getItem("key");
     if(localkey==null){
                    userInput = prompt("Please enter key:");
                 }
 
     if (userInput === "aa") {
       setAl(true);
-      sessionStorage.setItem("key", "baby");
+      localStorage.setItem("key", "baby");
     }
     
     else {
@@ -43,7 +43,7 @@ function App() {
 
   function clear(e){
     console.log("hello")
-    sessionStorage.clear();
+    localStorage.removeItem("key");
     window.location.reload();
   }
 
