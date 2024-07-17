@@ -69,6 +69,25 @@ useEffect(()=>{
     { name: 'Ivan', email: 'ivan@example.com', link: 'https://example.com/profile/ivan' },
     { name: 'Judy', email: 'judy@example.com', link: 'https://example.com/profile/judy' }
   ];
+
+
+
+
+  function DeleteEntry(url) {
+    axios.delete("http://localhost:8002/delete", {  // Use HTTP
+      data: { url: url }
+    })
+    .then((res) => {
+      console.log(res);
+      alert("delete successfully!!!")
+      window.location.reload();
+    })
+    .catch((error) => {
+      console.error('There was an error deleting the entry!', error);
+    });
+  }
+
+
   return (
     <>
       {
@@ -89,7 +108,7 @@ useEffect(()=>{
                   <td>{item.Name}</td>
                   <td>{item.Email}</td>
                   <td><a href={item.url}>click here for open</a></td>
-                  <td><button>delete entry</button></td>
+                  <td><button onClick={(e)=>{ DeleteEntry(item.url)}}>delete entry</button></td>
                 </tr>
               ))}
             </tbody>
