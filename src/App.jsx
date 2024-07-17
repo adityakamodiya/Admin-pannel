@@ -6,7 +6,7 @@ function App() {
   const [promptShown, setPromptShown] = useState(false); // Flag to ensure prompt is called once
   const [Formdata,setFormdata] = useState([]);
 useEffect(()=>{
-    axios.get("https://file-uploader-back-3i39.vercel.app/getdata")
+    axios.get("http://localhost:8002/getdata")
     .then((res)=>{
       console.log(res);
       setFormdata(res.data);
