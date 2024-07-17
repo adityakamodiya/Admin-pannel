@@ -1,9 +1,19 @@
 import { useEffect, useState } from 'react'
-
+import axios from "axios"
 function App() {
   const [al, setAl] = useState(false);
   // const [sessionkey, setsessionkey] = useState(null);
   const [promptShown, setPromptShown] = useState(false); // Flag to ensure prompt is called once
+  const [Formdata,setFormdata] = useState([]);
+useEffect(()=>{
+    axios.get("http://localhost:8002/getdata")
+    .then((res)=>{
+      console.log(res);
+      setFormdata(res.data);
+
+    })
+},[])
+
 
   function authenticate() {
     let localkey = null;
@@ -69,15 +79,17 @@ function App() {
               <tr>
                 <th>Name</th>
                 <th>Email</th>
-                <th>images</th>
+                <th>File Url</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              {data.map((item, index) => (
+              {Formdata.map((item, index) => (
                 <tr key={index}>
-                  <td>{item.name}</td>
-                  <td>{item.email}</td>
-                  <td>{item.link}</td>
+                  <td>{item.Name}</td>
+                  <td>{item.Email}</td>
+                  <td><a href={item.url}>click here for open</a></td>
+                  <td><button>delete entry</button></td>
                 </tr>
               ))}
             </tbody>
