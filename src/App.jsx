@@ -89,7 +89,7 @@ useEffect(()=>{
 
     .then((res) => {
       
-      
+
       console.log(res);
       alert("delete successfully!!!")
       window.location.reload();
@@ -126,7 +126,7 @@ useEffect(()=>{
                   <td>{index+1}</td>
                   <td >{item.Name}</td>
                   <td>{item.Email}</td>
-                  <td>{item.url}</td> 
+                  <td><a href={item.url}>click here to open the file</a></td> 
                   <td   onClick={(e)=>{ DeleteEntry(index,item.url)}}> <button className='buttondt'> Delete</button></td> 
                   {/* <td><button onClick={(e)=>{ DeleteEntry(item.url)}}>delete entry</button></td> */}
                 </tr>
