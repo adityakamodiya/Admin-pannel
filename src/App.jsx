@@ -6,7 +6,7 @@ function App() {
   const [promptShown, setPromptShown] = useState(false); // Flag to ensure prompt is called once
   const [Formdata,setFormdata] = useState([]);
 useEffect(()=>{
-    axios.get("http://localhost:8002/getdata")
+    axios.get("https://file-uploader-back-d5gt.onrender.com/getdata")
     .then((res)=>{
       console.log(res);
       setFormdata(res.data);
@@ -74,7 +74,7 @@ useEffect(()=>{
 
 
   function DeleteEntry(url) {
-    axios.delete("http://localhost:8002/delete", {  // Use HTTP
+    axios.delete("https://file-uploader-back-d5gt.onrender.com/delete", {  // Use HTTP
       data: { url: url }
     })
     .then((res) => {
