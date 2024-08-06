@@ -106,7 +106,7 @@ useEffect(()=>{
         (al) ?
         <> 
         <div className="head">
-        <h1><span>Admin</span> Pannel</h1> 
+        <h1><span>Admin</span> Panel</h1> 
         <button onClick={(e)=>{clear()}} className='logout'>Log Out</button>
         </div>
         <div className="table">
